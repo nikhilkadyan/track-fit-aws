@@ -1,0 +1,9 @@
+exports.MASTER_TABLE = 'tf_master';
+exports.TABLE_ID = 'id';
+exports.TABLE_SORT = 'sortKey';
+exports.TABLE_LSORT = 'lSortKey';
+exports.PK_VITAL_TEMP = 'USER#';
+exports.SK_VITAL_TEMP = 'VITAL#TEMP#';
+exports.LSK_VITAL_TEMP = 'VITAL#';
+exports.MEASUREMENT_DATE_KEY = 'measurementDate';
+exports.TEMPERATURE_KEY = 'temperature';

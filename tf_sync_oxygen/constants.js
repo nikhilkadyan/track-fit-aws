@@ -1,0 +1,10 @@
+exports.MASTER_TABLE = 'tf_master';
+exports.TABLE_ID = 'id';
+exports.TABLE_SORT = 'sortKey';
+exports.TABLE_LSORT = 'lSortKey';
+exports.PK_VITAL_OXYGEN = 'USER#';
+exports.SK_VITAL_OXYGEN = 'VITAL#OXYGEN#';
+exports.LSK_VITAL_OXYGEN = 'VITAL#';
+exports.MEASUREMENT_DATE_KEY = 'measurementDate';
+exports.OXYGEN_KEY = 'oxygen';
+exports.PULSE_KEY = 'pulse';

@@ -1,0 +1,11 @@
+exports.MASTER_TABLE = 'tf_master';
+exports.TABLE_ID = 'id';
+exports.TABLE_SORT = 'sortKey';
+exports.TABLE_LSORT = 'lSortKey';
+exports.PK_VITAL_BP = 'USER#';
+exports.SK_VITAL_BP = 'VITAL#BP#';
+exports.LSK_VITAL_BP = 'VITAL#';
+exports.MEASUREMENT_DATE_KEY = 'measurementDate';
+exports.SYSTOLIC_KEY = 'systolic';
+exports.DIASTOLIC_KEY = 'diastolic';
+exports.PULSE_KEY = 'pulse';

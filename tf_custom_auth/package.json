@@ -1,0 +1,12 @@
+{
+  "name": "custom_authorization",
+  "version": "1.0.0",
+  "description": "A middleware authorization to verify JWT token sent in headers.",
+  "main": "index.js",
+  "author": "TrackFit",
+  "license": "ISC",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.4"
+  }
+}
