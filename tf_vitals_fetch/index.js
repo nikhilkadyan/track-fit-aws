@@ -39,7 +39,7 @@ exports.handler = async (event) => {
         return {
             statusCode: 200,
             message: 'Vitals synced',
-            data: helper.formatReading(readings)
+            data: helper.formatReadings(readings)
         };;
     } catch (err) {
         console.error(err);

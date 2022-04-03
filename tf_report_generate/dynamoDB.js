@@ -13,7 +13,7 @@ const getAllVitals = async (email, fromDate, toDate) => {
             '#lsk': [CONSTANTS.TABLE_LSORT]
         },
         ExpressionAttributeValues: {
-            ':pk': CONSTANTS.PK_VITAL_OXYGEN + helper.hashId(email),
+            ':pk': CONSTANTS.PK_VITAL + helper.hashId(email),
             ':fromDate': CONSTANTS.LSK_VITAL + fromDate.toString(),
             ':toDate': CONSTANTS.LSK_VITAL + toDate.toString(),
         }

@@ -14,11 +14,12 @@ const throwCustomError = (code, message) => {
     throw error;
 }
 
-const formatReading = (readings) => {
+const formatReadings = (readings) => {
     const finalReadings = readings.map((reading) => {
         return {
             id: reading?.sortKey,
             type: reading?.type,
+            measurementDate: reading?.measurementDate,
             createdDate: reading?.createdDate,
             modifiedDate: reading?.modifiedDate,
             attributes: reading?.attributes
@@ -30,5 +31,5 @@ const formatReading = (readings) => {
 module.exports = {
     hashId,
     throwCustomError,
-    formatReading
+    formatReadings
 }

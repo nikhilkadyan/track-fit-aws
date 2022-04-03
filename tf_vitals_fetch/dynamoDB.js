@@ -12,7 +12,7 @@ const getBpData = async (email, fromDate, toDate) => {
             '#sk': [CONSTANTS.TABLE_SORT]
         },
         ExpressionAttributeValues: {
-            ':pk': CONSTANTS.PK_VITAL_BP + helper.hashId(email),
+            ':pk': CONSTANTS.PK_VITAL + helper.hashId(email),
             ':fromDate': CONSTANTS.SK_VITAL_BP + fromDate.toString(),
             ':toDate': CONSTANTS.SK_VITAL_BP + toDate.toString(),
         }
@@ -31,7 +31,7 @@ const getTempData = async (email, fromDate, toDate) => {
             '#sk': [CONSTANTS.TABLE_SORT]
         },
         ExpressionAttributeValues: {
-            ':pk': CONSTANTS.PK_VITAL_TEMP + helper.hashId(email),
+            ':pk': CONSTANTS.PK_VITAL + helper.hashId(email),
             ':fromDate': CONSTANTS.SK_VITAL_TEMP + fromDate.toString(),
             ':toDate': CONSTANTS.SK_VITAL_TEMP + toDate.toString(),
         }
@@ -50,7 +50,7 @@ const getOxygenData = async (email, fromDate, toDate) => {
             '#sk': [CONSTANTS.TABLE_SORT]
         },
         ExpressionAttributeValues: {
-            ':pk': CONSTANTS.PK_VITAL_OXYGEN + helper.hashId(email),
+            ':pk': CONSTANTS.PK_VITAL + helper.hashId(email),
             ':fromDate': CONSTANTS.SK_VITAL_OXYGEN + fromDate.toString(),
             ':toDate': CONSTANTS.SK_VITAL_OXYGEN + toDate.toString(),
         }
@@ -70,7 +70,7 @@ const getAllVitals = async (email, fromDate, toDate) => {
             '#lsk': [CONSTANTS.TABLE_LSORT]
         },
         ExpressionAttributeValues: {
-            ':pk': CONSTANTS.PK_VITAL_OXYGEN + helper.hashId(email),
+            ':pk': CONSTANTS.PK_VITAL + helper.hashId(email),
             ':fromDate': CONSTANTS.LSK_VITAL + fromDate.toString(),
             ':toDate': CONSTANTS.LSK_VITAL + toDate.toString(),
         }

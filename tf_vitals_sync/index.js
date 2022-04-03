@@ -15,6 +15,7 @@ const postBpData = async ({ email, measurements }) => {
             );
             if (bpData) {
                 bpData.modifiedDate = currentTime;
+                bpData.measurementDate = measurement.measurementDate;
                 bpData.attributes = {
                     systolic: measurement.systolic.toString(),
                     diastolic: measurement.diastolic.toString(),
@@ -28,6 +29,7 @@ const postBpData = async ({ email, measurements }) => {
                     [CONSTANTS.TABLE_LSORT]: CONSTANTS.LSK_VITAL + measurement.measurementDate.toString(),
                     createdDate: currentTime,
                     modifiedDate: currentTime,
+                    measurementDate: measurement.measurementDate,
                     type: CONSTANTS.VITALS_TYPE.bp,
                     attributes: {
                         systolic: measurement.systolic.toString(),
@@ -54,6 +56,7 @@ const postTempData = async ({ email, measurements }) => {
             );
             if (tempData) {
                 tempData.modifiedDate = currentTime;
+                tempData.measurementDate = measurement.measurementDate;
                 tempData.attributes = {
                     temperature: measurement.temperature.toString()
                 }
@@ -62,9 +65,10 @@ const postTempData = async ({ email, measurements }) => {
                 const tempData = {
                     [CONSTANTS.TABLE_ID]: CONSTANTS.PK_VITAL_TEMP + helper.hashId(email),
                     [CONSTANTS.TABLE_SORT]: CONSTANTS.SK_VITAL_TEMP + measurement.measurementDate.toString(),
-                    [CONSTANTS.TABLE_LSORT]: CONSTANTS.LSK_VITALMP + measurement.measurementDate.toString(),
+                    [CONSTANTS.TABLE_LSORT]: CONSTANTS.LSK_VITAL + measurement.measurementDate.toString(),
                     createdDate: currentTime,
                     modifiedDate: currentTime,
+                    measurementDate: measurement.measurementDate,
                     type: CONSTANTS.VITALS_TYPE.temperature,
                     attributes: {
                         temperature: measurement.temperature.toString()
@@ -89,6 +93,7 @@ const postOxygenData = async ({ email, measurements }) => {
             );
             if (oxygenData) {
                 oxygenData.modifiedDate = currentTime;
+                oxygenData.measurementDate = measurement.measurementDate;
                 oxygenData.attributes = {
                     oxygen: measurement.oxygen.toString(),
                     pulse: measurement.pulse.toString(),
@@ -99,9 +104,10 @@ const postOxygenData = async ({ email, measurements }) => {
                 const oxygenData = {
                     [CONSTANTS.TABLE_ID]: CONSTANTS.PK_VITAL_OXYGEN + helper.hashId(email),
                     [CONSTANTS.TABLE_SORT]: CONSTANTS.SK_VITAL_OXYGEN + measurement.measurementDate.toString(),
-                    [CONSTANTS.TABLE_LSORT]: CONSTANTS.LSK_VITALYGEN + measurement.measurementDate.toString(),
+                    [CONSTANTS.TABLE_LSORT]: CONSTANTS.LSK_VITAL + measurement.measurementDate.toString(),
                     createdDate: currentTime,
                     modifiedDate: currentTime,
+                    measurementDate: measurement.measurementDate,
                     type: CONSTANTS.VITALS_TYPE.oxygen,
                     attributes: {
                         oxygen: measurement.oxygen.toString(),
