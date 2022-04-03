@@ -1,27 +1,35 @@
-const AWS = require('aws-sdk');
-const helper = require('./helper');
 const db = require('./dynamoDB');
+const helper = require('./helper');
+const report = require('./report');
 
 const applyValidation = ({ fromDate, toDate }) => {
     if (!fromDate) {
         helper.throwCustomError(400, 'From date is required parameter');
+        fromDate = Number(fromDate)
     }
     if (!toDate) {
         helper.throwCustomError(400, 'To date is required parameter');
+        toDate = Number(toDate)
     }
 }
 
 exports.handler = async (event) => {
     try {
-        if (!event.emailAddress) helper.throwCustomError(403, 'Unauthorized');
+        // validate request
+        if (!event.email) helper.throwCustomError(403, 'Unauthorized');
         event = { ...event, ...event.body };
         applyValidation(event)
-        const readings = await db.getOxygenData(event.emailAddress, event.fromDate, event.toDate);
-        if (readings.length === 0) helper.throwCustomError(404, 'No readings found.')
+
+        // Fetch readings
+        let readings = await db.getAllVitals(event.email, event.fromDate, event.toDate);
+        if (!readings || readings.length === 0) helper.throwCustomError(404, 'No readings found.')
+
+        // Create report
+        const html = await report.generateReport(readings)
         return {
             statusCode: 200,
-            message: 'Vitals synced',
-            data: readings
+            message: 'Report generated',
+            report: html
         };;
     } catch (err) {
         console.error(err);

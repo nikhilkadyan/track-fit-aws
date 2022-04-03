@@ -16,5 +16,5 @@ const throwCustomError = (code, message) => {
 
 module.exports = {
     hashId,
-    throwCustomError
+    throwCustomError,
 }

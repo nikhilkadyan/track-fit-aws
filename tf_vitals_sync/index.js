@@ -25,7 +25,7 @@ const postBpData = async ({ email, measurements }) => {
                 const bpData = {
                     [CONSTANTS.TABLE_ID]: CONSTANTS.PK_VITAL_BP + helper.hashId(email),
                     [CONSTANTS.TABLE_SORT]: CONSTANTS.SK_VITAL_BP + measurement.measurementDate.toString(),
-                    [CONSTANTS.TABLE_LSORT]: CONSTANTS.LSK_VITAL_BP + measurement.measurementDate.toString(),
+                    [CONSTANTS.TABLE_LSORT]: CONSTANTS.LSK_VITAL + measurement.measurementDate.toString(),
                     createdDate: currentTime,
                     modifiedDate: currentTime,
                     type: CONSTANTS.VITALS_TYPE.bp,
@@ -62,7 +62,7 @@ const postTempData = async ({ email, measurements }) => {
                 const tempData = {
                     [CONSTANTS.TABLE_ID]: CONSTANTS.PK_VITAL_TEMP + helper.hashId(email),
                     [CONSTANTS.TABLE_SORT]: CONSTANTS.SK_VITAL_TEMP + measurement.measurementDate.toString(),
-                    [CONSTANTS.TABLE_LSORT]: CONSTANTS.LSK_VITAL_TEMP + measurement.measurementDate.toString(),
+                    [CONSTANTS.TABLE_LSORT]: CONSTANTS.LSK_VITALMP + measurement.measurementDate.toString(),
                     createdDate: currentTime,
                     modifiedDate: currentTime,
                     type: CONSTANTS.VITALS_TYPE.temperature,
@@ -99,7 +99,7 @@ const postOxygenData = async ({ email, measurements }) => {
                 const oxygenData = {
                     [CONSTANTS.TABLE_ID]: CONSTANTS.PK_VITAL_OXYGEN + helper.hashId(email),
                     [CONSTANTS.TABLE_SORT]: CONSTANTS.SK_VITAL_OXYGEN + measurement.measurementDate.toString(),
-                    [CONSTANTS.TABLE_LSORT]: CONSTANTS.LSK_VITAL_OXYGEN + measurement.measurementDate.toString(),
+                    [CONSTANTS.TABLE_LSORT]: CONSTANTS.LSK_VITALYGEN + measurement.measurementDate.toString(),
                     createdDate: currentTime,
                     modifiedDate: currentTime,
                     type: CONSTANTS.VITALS_TYPE.oxygen,

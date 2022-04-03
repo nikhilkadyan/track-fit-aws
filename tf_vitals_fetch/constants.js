@@ -2,6 +2,9 @@
 exports.MASTER_TABLE = 'tf_master';
 exports.TABLE_ID = 'id';
 exports.TABLE_SORT = 'sortKey';
+exports.TABLE_LSORT = 'lSortKey';
+exports.LSK_INDEX = 'lSortKey-index'
+exports.LSK_VITAL = 'VITAL#';
 exports.VITALS_TYPE = {
     bp: 'bp',
     temperature: 'temperature',

@@ -3,18 +3,19 @@ const helper = require('./helper');
 const CONSTANTS = require('./constants');
 const dbClient = new AWS.DynamoDB.DocumentClient();
 
-const getOxygenData = async (emailAddress, fromDate, toDate) => {
+const getAllVitals = async (email, fromDate, toDate) => {
     const params = {
         TableName: CONSTANTS.MASTER_TABLE,
-        KeyConditionExpression: '#pk = :pk AND #sk BETWEEN :fromDate AND :toDate',
+        IndexName: CONSTANTS.LSK_INDEX,
+        KeyConditionExpression: '#pk = :pk AND #lsk BETWEEN :fromDate AND :toDate',
         ExpressionAttributeNames: {
             '#pk': [CONSTANTS.TABLE_ID],
-            '#sk': [CONSTANTS.TABLE_SORT]
+            '#lsk': [CONSTANTS.TABLE_LSORT]
         },
         ExpressionAttributeValues: {
-            ':pk': CONSTANTS.PK_VITAL_OXYGEN + helper.hashId(emailAddress),
-            ':fromDate': CONSTANTS.SK_VITAL_OXYGEN + fromDate.toString(),
-            ':toDate': CONSTANTS.SK_VITAL_OXYGEN + toDate.toString(),
+            ':pk': CONSTANTS.PK_VITAL_OXYGEN + helper.hashId(email),
+            ':fromDate': CONSTANTS.LSK_VITAL + fromDate.toString(),
+            ':toDate': CONSTANTS.LSK_VITAL + toDate.toString(),
         }
     }
     const { Count, Items } = await dbClient.query(params).promise();
@@ -23,5 +24,5 @@ const getOxygenData = async (emailAddress, fromDate, toDate) => {
 }
 
 module.exports = {
-    getOxygenData
+    getAllVitals,
 }

@@ -2,11 +2,7 @@ const db = require('./dynamoDB');
 const helper = require('./helper');
 const CONSTANTS = require('./constants');
 
-const applyValidation = ({ type, fromDate, toDate }) => {
-    if (!type) {
-        helper.throwCustomError(400, 'Type is required parameter');
-        type = type.toLowerCase()
-    }
+const applyValidation = ({ fromDate, toDate }) => {
     if (!fromDate) {
         helper.throwCustomError(400, 'From date is required parameter');
         fromDate = Number(fromDate)
@@ -35,7 +31,7 @@ exports.handler = async (event) => {
                 readings = await db.getOxygenData(event.email, event.fromDate, event.toDate);
                 break;
             default:
-                helper.throwCustomError(400, 'Invalid vital type')
+                readings = await db.getAllVitals(event.email, event.fromDate, event.toDate);
                 break;
         }
 
